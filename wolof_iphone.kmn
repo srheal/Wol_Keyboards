@@ -1,0 +1,5 @@
+﻿store(&TARGETS) 'iphone'
+store(&LAYOUTFILE) 'wolof_iphone.keyman-touch-layout'
+begin Unicode > use(main)
+
+group(main) using keys
