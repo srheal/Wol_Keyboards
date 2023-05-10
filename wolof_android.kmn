@@ -1,0 +1,5 @@
+﻿store(&TARGETS) 'androidphone'
+store(&LAYOUTFILE) 'wolof_android.keyman-touch-layout'
+begin Unicode > use(main)
+
+group(main) using keys
