@@ -1,1 +1,215 @@
+;; wol.mim -- Input method for Wolof
+
+(input-method wo wolof-keyboard)
+
+(description (_"This is a keyboard for wolof designed for ling073! Documentation available @ [https://wikis.swarthmore.edu/ling073/Wolof/Keyboard]
+
+     &1  z2  \"3  '4  (5  -6  ~7  _8  ç9  à0  )°  =_  ã*
+      aA  ëË  eE  rR  tT  yY  uU  iI  oO  pP  ´`  óÓ
+       qQ  sS  dD  fF  gG  hH  jJ  kK  lL  mM  ŋ%  vV
+        wW  xX  cC  ñÑ  bB  nN  ,?  ;.  :/  !|
+
+'[' and '{' are used as a dead key to type a character with the
+aigu and grave respectively (e.g. '[' 'e' -> \"é\").
+
+'Alt-2' and 'Alt-7' are used as a dead key to type a character
+with circumflex and diaeresis respectively (e.g. 'Alt-7' 'e' -> \"ë\").
+
+'Ctrl-Alt-2' and 'Ctrl-Alt-7' can be used as 'Alt-2' and 'Alt-7'
+respectively.
+
+Azerty keyboard, which wolof-keyboard is based on has one more key at the bottom left corner for
+inputting \"<\" and \">\".  As a normal English keyboard doesn't
+have such a key left, type '<' and '>' twice for \"<\" and \">\"
+respectively."))
+
+(title "wolof-keyboard")
+
+(map
+ (normal
+  ("1" ?&)
+  ("2" ?z)
+  ("3" ?\")
+  ("4" ?')
+  ("5" ?\()
+  ("6" ?-)
+  ("7" ?~)
+  ("8" ?_)
+  ("9" ?ç)
+  ("0" ?à)
+  ("-" ?\))
+  ("=" ?=)
+  ("`" ?ã)
+  ("q" ?a)
+  ("w" ?ë)
+  ("e" ?e)
+  ("r" ?r)
+  ("t" ?t)
+  ("y" ?y)
+  ("u" ?u)
+  ("i" ?i)
+  ("o" ?o)
+  ("p" ?p)
+  ;; ("[" ?´)
+  ("]" ?ó)
+  ("a" ?q)
+  ("s" ?s)
+  ("d" ?d)
+  ("f" ?f)
+  ("g" ?g)
+  ("h" ?h)
+  ("j" ?j)
+  ("k" ?k)
+  ("l" ?l)
+  (";" ?m)
+  ("'" ?ŋ)
+  ("\\" ?v)
+  ("z" ?w)
+  ("x" ?x)
+  ("c" ?c)
+  ("v" ?ñ)
+  ("b" ?b)
+  ("n" ?n)
+  ("m" ?,)
+  ("," ?\;)
+  ("." ?:)
+  ("/" ?!)
+
+  ("!" ?1)
+  ("@" ?2)
+  ("#" ?3)
+  ("$" ?4)
+  ("%" ?5)
+  ("^" ?6)
+  ("&" ?7)
+  ("*" ?8)
+  ("(" ?9)
+  (")" ?0)
+  ("_" ?°)
+  ("+" ?+)
+  ("~" ?*)
+  ("Q" ?A)
+  ("W" ?Ë)
+  ("E" ?E)
+  ("R" ?R)
+  ("T" ?T)
+  ("Y" ?Y)
+  ("U" ?U)
+  ("I" ?I)
+  ("O" ?O)
+  ("P" ?P)
+  ;; ("{" ?`)
+  ("}" ?Ó)
+
+  ("A" ?Q)
+  ("S" ?S)
+  ("D" ?D)
+  ("F" ?F)
+  ("G" ?G)
+  ("H" ?H)
+  ("J" ?J)
+  ("K" ?K)
+  ("L" ?L)
+  (":" ?M)
+  ("\"" ?%)
+  ("|" ?V)
+  ("Z" ?W)
+  ("X" ?X)
+  ("C" ?C)
+  ("V" ?Ñ)
+  ("B" ?B)
+  ("N" ?N)
+  ("M" ??)
+  ("<" ?.)
+  ("<<" ?<)
+  (">" ?/)
+  (">>" ?>)
+  ("?" ?|))
+
+ ;; Deadkeys
+ (left-square-bracket
+  ("["))
+
+ (left-curly-bracket
+  ("{"))
+
+ (alt-2
+  ((A-2))
+  ((C-A-2)))
+
+ (alt-7
+  ((A-7))
+  ((C-A-7)))
+
+ ;; Letters with diacritical marks
+ (aigu
+  ("[" ?´)
+  ("e" ?é)
+  ("E" ?É)
+  ("o" ?ó)
+  ("O" ?Ó))
+
+ (grave
+  ("{" ?`)
+  ("q" ?à)
+  ("e" ?è)
+  ("i" ?ì)
+  ("o" ?ò)
+  ("u" ?ù)
+  ("Q" ?À)
+  ("E" ?È)
+  ("I" ?Ì)
+  ("O" ?Ò)
+  ("U" ?Ù)))
+
+ (circumflex
+  ("3" ?^)
+  ("q" ?â)
+  ("e" ?ê)
+  ("i" ?î)
+  ("o" ?ô)
+  ("u" ?û)
+  ("Q" ?Â)
+  ("E" ?Ê)
+  ("I" ?Î)
+  ("O" ?Ô)
+  ("U" ?Û))
+
+ (diaeresis
+  ("q" ?ä)
+  ("e" ?ë)
+  ("i" ?ï)
+  ("o" ?ö)
+  ("u" ?ü)
+  ("y" ?ÿ)
+  ("Q" ?Ä)
+  ("E" ?Ë)
+  ("I" ?Ï)
+  ("O" ?Ö)
+  ("U" ?Ü)
+  ("Y" ?Ÿ))
+
+(state
+ (init
+  (normal)
+  (left-square-bracket (shift aigu))
+  (left-curly-bracket (shift grave))
+  (alt-2 (shift circumflex))
+  (alt-7 (shift diaeresis)))
+
+ (aigu
+  "wolof-keyboard´"
+  (aigu (shift init)))
+
+ (grave
+  "wolof-keyboard`"
+  (grave (shift init)))
+
+ (circumflex
+  "wolof-keyboard^"
+  (circumflex (shift init)))
+
+ (diaeresis
+  "wolof-keyboard¨"
+  (diaeresis (shift init))))
 
