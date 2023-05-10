@@ -1,0 +1,11 @@
+Make sure IBUS is installed and running
+
+In a terminal window, type the following command to navigate to the directory containing keyboard layouts:
+
+cd /usr/share/m17n/
+
+Now use the following command to copy our keyboard to a directory of your choosing on your machine:
+
+cp wol.mim [insert path for your directory here]
+
+You have our Wolof keyboard layout!
